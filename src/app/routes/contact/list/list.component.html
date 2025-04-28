@@ -14,5 +14,5 @@
 </div>
 
 @for (contact of filteredContacts; track contact) {
-    <app-contact-card (selectedContact)="edit($event)" [contact]="contact" />
+    <app-contact-card (selectedContact)="edit($event)" (deleteContact)="delete($event)" [contact]="contact" />
 }

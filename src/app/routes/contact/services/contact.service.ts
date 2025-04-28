@@ -39,4 +39,8 @@ export class ContactService {
     });
     return this.http.put<Contact>(`/contacts/${contactData.id}`, contactData, { headers });
   }
+  
+  deleteContact(contactId: string) {
+    return this.http.delete(`/contacts/${contactId}`);
+  }
 }

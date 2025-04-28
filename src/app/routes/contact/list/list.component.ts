@@ -11,6 +11,8 @@ import { BreadcrumbComponent } from '@shared';
 import { ContactCardComponent } from "../card/contact-card.component";
 import { Contact } from '../interface';
 import { ContactService } from '../services/contact.service';
+import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-contact',
@@ -28,16 +30,22 @@ import { ContactService } from '../services/contact.service';
   ]
 })
 export class ListContactsComponent {
+
   handleContactSelection($event: Event) {
     throw new Error('Method not implemented.');
   }
 
   private readonly contactService = inject(ContactService);
   private readonly router = inject(Router);
+  toast = inject(ToastrService);
   contacts!: Contact[];
   searchText: string = '';
 
   ngOnInit(): void {
+    this.fetchAllContacts();
+  }
+
+  private fetchAllContacts() {
     this.contactService.fetchAllContacts()
       .subscribe(contactDetails => this.contacts = contactDetails);
   }
@@ -63,6 +71,18 @@ export class ListContactsComponent {
         value && value.toString().toLowerCase().includes(lowerSearch)
       )
     );
+  }
+
+  delete(contactId: string) {
+    this.contactService.deleteContact(contactId).subscribe({
+      next: () => {
+        this.toast.success('Contact Deleted Successfully');
+        this.fetchAllContacts();
+      },
+      error: () => {
+        this.toast.error('Unable to delete contact');
+      }
+    })
   }
 
 }

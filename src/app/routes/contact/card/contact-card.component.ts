@@ -23,8 +23,13 @@ import { MatDividerModule } from '@angular/material/divider';
 export class ContactCardComponent {
     @Input() contact: any;
     @Output() selectedContact = new EventEmitter<string>();
+    @Output() deleteContact = new EventEmitter<string>();
 
     emitSelectedContact(contactId: string) {
         this.selectedContact.emit(contactId);
+    }
+
+    emitContactToDelete(contactId: string) {
+        this.deleteContact.emit(contactId);
     }
 }
