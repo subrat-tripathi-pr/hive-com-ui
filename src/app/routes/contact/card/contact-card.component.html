@@ -1,0 +1,36 @@
+<mat-card class="contact-card">
+    <div class="card-content">
+        <div class="contact-details">
+            <mat-card-header>
+                <mat-card-title>{{ contact.firstName + ' ' + contact.lastName }}</mat-card-title>
+                <mat-card-subtitle>{{ contact.company }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Phone: {{ contact.phone }}</p>
+                <p>Email: {{ contact.email }}</p>
+                <p>Address: {{ contact.address }}</p>
+                <p>City: {{ contact.city }}</p>
+                <p>Zip Code: {{ contact.zipCode }}</p>
+                <p>Website: {{ contact.website }}</p>
+                <p>Tags: </p>
+                <mat-list role="tags">
+                    @for (tag of contact.tags; track tag) {
+                    <mat-list-item role="tag">
+                        <p matListItemLine>{{ tag }}</p>
+                    </mat-list-item>
+                    }
+                </mat-list>
+            </mat-card-content>
+        </div>
+        <mat-divider [vertical]="true" />
+        <img class="d-flex justify-content-end align-items-start p-2 m-b-8 avatar r-full"
+            [src]="contact.image" alt="" width="100" />
+    </div>
+
+    <div class="d-flex justify-content-end m-b-16 m-r-24">
+        <button class="btn btn-primary icon-button" mat-icon-button matTooltip="Update Contact"
+            (click)="emitSelectedContact(contact.id)">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+</mat-card>

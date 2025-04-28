@@ -1,0 +1,14 @@
+.icon-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;  /* Space between icon and label */
+  }
+  
+  .icon-button .material-icons {
+    font-size: 20px;  /* Adjust icon size */
+  }
+  
+  .icon-button i {
+    font-size: 18px;  /* Adjust icon size for Font Awesome */
+  }
+  

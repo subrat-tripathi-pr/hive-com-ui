@@ -1,0 +1,20 @@
+{
+  "menu": [
+    {
+      "route": "dashboard",
+      "name": "Dashboard",
+      "type": "link",
+      "icon": "dashboard",
+      "badge": {
+        "color": "red-50",
+        "value": "5"
+      }
+    },
+    {
+      "route": "/contact/list",
+      "name": "Clients",
+      "type": "link",
+      "icon": "business"
+    }
+  ]
+}

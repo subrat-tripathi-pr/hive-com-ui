@@ -1,0 +1,18 @@
+<!-- <page-header class="bg-dark text-light" title="Contacts" /> -->
+<breadcrumb />
+
+<mat-form-field appearance="outline">
+    <mat-label>Search Contacts</mat-label>
+    <input matInput [(ngModel)]="searchText" placeholder="Type to search">
+</mat-form-field>
+  
+<div class="d-flex justify-content-end m-b-16 m-r-16">
+    <button class="btn btn-primary icon-button" mat-icon-button (click)="addContact()">
+        <mat-icon>person_add</mat-icon>
+        <span>Add Contact</span>
+    </button>
+</div>
+
+@for (contact of filteredContacts; track contact) {
+    <app-contact-card (selectedContact)="edit($event)" [contact]="contact" />
+}
